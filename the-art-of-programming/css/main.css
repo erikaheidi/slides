@@ -1,0 +1,70 @@
+section.e_custom .e_slide_title_left {
+    position: absolute;
+    text-align: left;
+    top: 10em;
+    height: 540px;
+    left: -100px;
+}
+
+section.e_custom .e_slide_caption_left {
+    position: absolute;
+    text-align: left;
+    top: 16em;
+    left: -50px;
+    color: #333333;
+}
+
+section.e_custom .e_slide_caption_left h2 {
+    color: #333333;
+}
+
+section.e_custom .e_slide_title_left h2 {
+    font-size: 3em;
+}
+
+section.e_custom .e_slide_title_left p {
+    margin-left: 0.2em;
+    font-size: 1.2em;
+    color: #979797;
+}
+
+section.e_custom img.e_image_thumb {
+    float: left;
+    margin: 5px;
+    width: 300px;
+    height: 300px;
+}
+
+section.e_custom .e_hero {
+    font-size: 2em;
+}
+
+blockquote.dark {
+    background-color: #111111;
+    color: #ffffff;
+    opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=70); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=70)"; /* IE 8 */
+    -khtml-opacity: .70; /* Safari 1.x */
+    -moz-opacity: .70; /* FF lt 1.5, Netscape */
+}
+
+blockquote.mh01 {
+    left: 200px; width: 90%
+}
+
+blockquote.mh02 {
+    left: 350px;top:100px; width: 70%
+}
+
+blockquote.big {
+    padding: 15px 25px;
+    font-size: 1.5em;
+}
+
+blockquote span.author {
+    text-align: right;
+    display: block;
+    font-weight: bold;
+    font-size: 0.8em;
+}
