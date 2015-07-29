@@ -310,6 +310,7 @@ thrown in /vagrant/tests/test04.php on line 7</code></pre>
                         <li><a href="https://wiki.php.net/rfc/isset_ternary">Null Coalesce Operator</a></li>
                         <li><a href="https://wiki.php.net/rfc/scalar_type_hints_v5">Scalar Type Hints</a></li>
                         <li><a href="https://wiki.php.net/rfc/return_types">Return Type Hints</a></li>
+                        <li><a href="https://wiki.php.net/rfc/anonymous_classes">Anonymous Classes</a></li>
                     </ul>
                 </section>
 
@@ -439,11 +440,36 @@ thrown in /tests/returntypes_strict.php on line 6</code>
                 </section>
 
                 <section>
+                    <h2>Anonymous Classes</h2>
+                    <pre><code>&lt;?php
+$obj = new class() {
+    public function foo() { return 'bar'; }
+};
+
+echo $obj->foo();</code></pre>
+                    <div class="fragment">
+                    <pre><code>&lt;?php
+$app->register(new class() implements ServiceProviderInterface {
+    public function register($app) {
+        /** do stuff */
+    }
+});</code></pre></div>
+
+                    <div class="fragment">
+                        <pre><code>&lt;?php
+$process = new class extends Process {
+    public function start() {
+        /* ... */
+    }
+};</code></pre></div>
+                </section>
+
+                <section>
                     <h2>What Now?</h2>
                     <ul>
-                        <li class="fragment"><a href="https://wiki.php.net/rfc/php7timeline">PHP 7 Timeline</a></li>
-                        <li class="fragment"><a href="https://wiki.php.net/rfc#php_70">All PHP 7 changes and new features</a></li>
-                        <li class="fragment"><a href="https://github.com/rlerdorf/php7dev">PHP 7 Vagrant VM by Rasmus</a></li>
+                        <li class="fragment"><a href="https://wiki.php.net/rfc/php7timeline">Check the PHP 7 Timeline</a></li>
+                        <li class="fragment"><a href="https://wiki.php.net/rfc#php_70">See all PHP 7 changes and new features</a></li>
+                        <li class="fragment"><a href="https://github.com/rlerdorf/php7dev"><strong>Test your code with the PHP 7 Vagrant VM by Rasmus</strong></a></li>
                     </ul>
                 </section>
 
