@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>DRIVE with Vagrant and Ansible</title>
+
+		<meta name="description" content="Talk about PHP 7">
+		<meta name="author" content="@erikaheidi">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+                <!--<section data-background="images/php7_wallpaper.jpg">
+
+                </section>-->
+
+				<section>
+					<h1>D.R.I.V.E.<br/>
+                        <small>with Vagrant and Ansible</small></h1>
+					<p>
+						A talk by <a href="http://twitter.com/erikaheidi">@erikaheidi</a><br>
+                        <img style="border:0;background:none" src="images/do.png">
+					</p>
+				</section>
+
+                <section>
+                    <h2>Back in Time...</h2>
+                </section>
+
+                <section>
+                    <h2>(PHP) Development Environments</h2>
+                    <div style="float: left" class="fragment">
+                        <p>Who never?</p>
+                        <img src="img/wamp_old.jpg">
+                    </div>
+
+                    <div style="float: right" class="fragment">
+                        <p>Linux: hackers only</p>
+                        <img src="img/hackers.gif">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Sharing the Project</h2>
+                    <img src="img/upload.gif">
+                </section>
+
+                <section>
+                    <h2>Deployment</h2>
+                    <img src="img/wsftp.gif">
+                </section>
+
+                <section>
+                    <h2>Hosting</h2>
+                    <img src="img/cpanel.jpg">
+                </section>
+
+                <section>
+                    <h2>Back to 2015</h2>
+                </section>
+
+                <section>
+                    <h2>What a Time to Be Alive!</h2>
+                    <img src="img/builtin.png">
+
+                    <img src="img/ubuntu.png" style="border: none; background-color: transparent; float: left">
+                    <img src="img/git-logo.png" style="border: none; background-color: transparent; float: left">
+
+                </section>
+
+                <section>
+                    <h2>But, still...</h2>
+                    <p>"It works on my machine..."</p>
+                    <img src="img/catslap.gif">
+                </section>
+
+                <section>
+                    <h3>What's the best way to make your development process more consistent and avoid
+                    the <em><strong>snowflake conundrum</strong></em> ?</h3>
+                </section>
+
+                <section>
+                    <h2>D.R.I.V.E.</h2>
+                    <ul>
+                        <li><strong>D</strong>isposable</li>
+                        <li><strong>R</strong>eplicable</li>
+                        <li><strong>I</strong>solated</li>
+                        <li><strong>V</strong>ersioned</li>
+                        <li><strong>E</strong>nvironment</li>
+                    </ul>
+                </section>
+
+                <section>
+                    IMAGE explaining: disposable + isolated = VMs e containers, etc
+                </section>
+
+                <section>
+                    <h2>Virtual Machines</h2>
+                    <ul>
+                        <li class="fragment"><strong>Disposable</strong> Machine</li>
+                        <li class="fragment"><strong>Isolated</strong> Environment</li>
+                        <li class="fragment">Tools:
+                            <ul>
+                                <li>VirtualBox</li>
+                                <li>VMWare</li>
+                                <li>KVM</li>
+                                <li>Xen</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Configuration Management</h2>
+                    <ul>
+                        <li class="fragment"><strong>Replicable</strong> Provisioning</li>
+                        <li class="fragment">"Blueprint" of the Provisioning can be <strong>Versioned</strong></li>
+                        <li class="fragment">Tools:
+                            <ul>
+                                <li>Ansible</li>
+                                <li>Puppet</li>
+                                <li>Chef</li>
+                                <li>Salt</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Vagrant</h2>
+                    <ul>
+                        <li>Clever Tool</li>
+                        <li>Virtual Machines + Configuration Management</li>
+                        <li>Easy <strong>DRIVE</strong> for <strong>DEV</strong></li>
+                        <li>Made conf management popular w/ devs
+                            <ul>
+                                <li><strong>and we nailed it</strong></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Otto?</h2>
+                    <img src="img/otto.png">
+                    <blockquote class="fragment">"Otto is very young and while we tout it as a successor to Vagrant, it'll take time to reach the maturity level that Vagrant is already at. We don't recommend dropping Vagrant today, but look to Otto for the future.."</blockquote>
+                </section>
+
+                <section>
+                    <h2>How Vagrant Works</h2>
+                    <img src="img/howitworks.png" style="background-color: #FFFFFF">
+                </section>
+
+                <section>
+                    <h2>Closing the Gap</h2>
+                    <ul>
+                        <li>Provisioning for <strong>DEV</strong> is ready. How hard it is<br>to customize for <strong>PROD</strong>?</li>
+                        <li>Many won't take advantage due to the complexity<br> of the tool used</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2><strong>Ansible</strong> to the rescue!</h2>
+                    <ul>
+                        <li class="fragment">Simple language (YAML)</li>
+                        <li class="fragment">Developer-friendly</li>
+                        <li class="fragment">Agentless Architecture</li>
+                        <li class="fragment">Great collection of built-in modules</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Playbook Example</h2>
+
+<pre><code data-trim contenteditable>
+---
+- hosts: all
+  sudo: true
+  tasks:
+    - name: Update apt-cache
+      apt: update_cache=yes
+
+    - name: Install Nginx
+      apt: pkg=nginx state=latest
+
+</code>
+</pre>
+                </section>
+
+                <section>
+                    <h2>Playbook Resources</h2>
+                    <ul>
+                        <li class="fragment">Variables</li>
+                        <li class="fragment">Loops</li>
+                        <li class="fragment">Conditionals</li>
+                        <li class="fragment">Templates</li>
+                        <li class="fragment">Ansible Vault</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Using Vagrant with Ansible</h2>
+<pre><code data-trim contenteditable>
+#Vagrantfile
+
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "hashicorp/precise64"
+
+    config.vm.provision "ansible" do |ansible|
+         ansible.playbook = "playbook.yml"
+    end
+
+end
+</code>
+</pre>
+
+<pre><code data-trim contenteditable>
+$ vagrant up
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Closing the Gap:<br>
+                        <strong>Multistage Environments</strong></h2>
+                    <img src="img/diagram.jpg">
+                    <h3>I'll share <strong>my</strong> process</h3>
+                </section>
+
+                <section>
+                    <h2>1. Use Phansible as Boilerplate</h2>
+                    <img src="img/phansible.png">
+                    <p><small><a href="http://phansible.com">http://phansible.com</a> </small></p>
+                </section>
+
+                <section>
+                    <h2>1. Use Phansible as Boilerplate</h2>
+<pre><code data-trim>
+.
+├── ansible
+│   ├── files
+│   │   └── authorized_keys
+│   ├── inventories
+│   │   └── dev
+│   ├── playbook.yml
+│   ├── roles
+│   │   ├── app
+│   │   ├── mysql
+│   │   ├── nginx
+│   │   ├── php
+│   │   ├── server
+│   │   └── vagrant_local
+│   ├── vars
+│   │   └── all.yml
+│   └── windows.sh
+└── Vagrantfile
+
+</code>
+</pre>
+                </section>
+
+                <section>
+                    <h2>2. Organize the Inventories</h2>
+
+                    <div class="output left">
+<pre><code data-trim contenteditable>
+#ansible/inventories/dev
+[myapp-dev]
+192.168.11.15
+</code>
+</pre>
+
+
+<pre><code data-trim contenteditable>
+#ansible/inventories/prod
+[myapp-prod]
+128.199.38.37
+</code>
+</pre>
+                    </div>
+
+                    <div class="output">
+<pre><code data-trim>
+.
+├── ansible
+│   ├── files
+│   │   └── authorized_keys
+│   ├── inventories
+│   │   ├── dev
+│   │   └── prod
+│   ├── playbook.yml
+│   ├── roles
+│   │   ├── app
+│   │   ├── mysql
+│   │   ├── nginx
+│   │   ├── php
+│   │   ├── server
+│   │   └── vagrant_local
+│   ├── vars
+│   │   └── all.yml
+│   └── windows.sh
+└── Vagrantfile
+
+</code>
+</pre>
+                    </div>
+</section>
+
+                <section>
+                    <h2>3. Configure Group Vars</h2>
+                    <ul>
+                        <li>Variables can be defined in many ways</li>
+                        <li>Phansible uses an included <em>var file</em> - works fine for dev</li>
+                        <li>But... <strong>Group Vars</strong> are the recommended way to customize for multistaging</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>3. Configure Group Vars</h2>
+<div class="fragment">
+<p><small><em>ansible/group_vars/<strong>all.yml</strong></em></small></p>
+<pre><code data-trim contenteditable>
+project_root: /vagrant
+sys_packages: ["git, vim, curl"]
+doc_root: /vagrant/web
+system_user: vagrant
+system_group: vagrant
+</code>
+</pre>
+</div>
+
+<div class="output left fragment">
+    <p><small><em>ansible/group_vars/<strong>myapp-dev.yml</strong></em></small></p>
+<pre><code data-trim contenteditable>
+project_root: /custom
+doc_root: /custom/web
+</code>
+</pre>
+</div>
+
+                    <div class="output fragment">
+                        <p><small><em>ansible/group_vars/<strong>myapp-prod.yml</strong></em></small></p>
+<pre><code data-trim contenteditable>
+project_root: /var/www
+doc_root: /var/www/web
+system_user: www-data
+system_group: www-data
+</code>
+</pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>3. Configure Group Vars</h2>
+<pre><code data-trim contenteditable>
+$ mkdir ansible/group_vars
+$ mv ansible/vars/all.yml ansible/group_vars/all.yml
+</code></pre>
+
+                    <p>Edit the Playbook: <strong>remove vars_files</strong> </p>
+<pre><code data-trim contenteditable>
+---
+  - hosts: all
+    sudo: true
+    vars_files:
+      - vars/all.yml
+    roles:
+      - server
+      - vagrant_local
+      - nginx
+      - mysql
+      - php
+      - app
+
+</code></pre>
+                    </section>
+
+                <section>
+
+                    <h2>My Multistaging Summary:</h2>
+                    <ul>
+                        <li>1. Use Phansible as Boilerplate</li>
+                        <li>2. Organize the Inventories</li>
+                        <li>3. Configure Group Vars</li>
+                        <li>PROFIT</li>
+                    </ul>
+                    <p><small>you can find detailed instructions <a href="http://www.erikaheidi.com/blog/configuring-a-multistage-environment-with-ansible-and-vagrant">here</a> </small></p>
+                </section>
+
+                <section>
+                    <h2>Wait...</h2>
+                    <img src="images/waitwhat.gif">
+                    <p>How do I use this?</p>
+                </section>
+
+                <section>
+                    <h2>Configuring server's SSH access</h2>
+                    <ul>
+                        <li>Regular user with <strong>sudo</strong> permission (KEYPAIR auth)</li>
+                        <li>For convenience, give <strong>NOPASSWD</strong> permission to this user, so you won't need
+                            to provide the sudo password each time you run Ansible</li>
+                    </ul>
+                    <p><small>details: <a href="http://www.erikaheidi.com/blog/configuring-ssh-server-access-for-ansible">check this tutorial</a></small></p>
+                </section>
+
+                <section>
+                    <h2>Test your Setup with Ansible</h2>
+<pre><code data-trim contenteditable>
+$ ansible all -i ansible/inventories/prod -m ping
+</code>
+</pre>
+
+<pre class="fragment"><code data-trim>
+128.199.38.37 | success >> {
+    "changed": false,
+    "ping": "pong"
+}
+</code></pre>
+                </section>
+
+                <section>
+                        <h2>Check the Playbook Tasks</h2>
+                    <p>This won't execute anything - it will just list the tasks</p>
+<pre><code data-trim contenteditable>
+$ ansible-playbook -i ansible/inventories/prod ansible/playbook.yml --list-tasks
+</code>
+</pre>
+
+<pre class="fragment"><code data-trim>
+ playbook: ansible/playbook.yml
+
+ play #1 (all):	TAGS: []
+    Update apt	TAGS: []
+    Install System Packages	TAGS: []
+    Install Extra Packages	TAGS: []
+    Configure the timezone	TAGS: []
+    More Configure the timezone	TAGS: []
+    Set default system language pack	TAGS: []
+    Set the hostname in /etc/hostname	TAGS: []
+    Set the hostname	TAGS: []
+    Update /etc/hosts	TAGS: []
+    Install Nginx	TAGS: []
+    Change default nginx site	TAGS: []
+    shell hostname	TAGS: []
+    mysql | Install MySQL Packages	TAGS: []
+    ...
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Run the Playbook</h2>
+<pre><code data-trim contenteditable>
+$ ansible-playbook -i ansible/inventories/prod ansible/playbook.yml
+</code>
+</pre>
+
+<pre class="fragment"><code data-trim>
+PLAY [all] ********************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [128.199.38.37]
+
+TASK: [server | Update apt] ***************************************************
+ok: [128.199.38.37]
+
+TASK: [server | Install System Packages] **************************************
+ok: [128.199.38.37] => (item=curl,wget,python-software-properties)
+
+TASK: [server | Install Extra Packages] ***************************************
+ok: [128.199.38.37] => (item=vim,git,fail2ban)
+
+TASK: [server | Configure the timezone] ***************************************
+ok: [128.199.38.37]
+
+TASK: [server | More Configure the timezone] **********************************
+ok: [128.199.38.37]
+    ...
+</code>
+</pre>
+                </section>
+
+                <section>
+                    <h2>Do you Like Cows?</h2>
+                    <div class="fragment">
+<pre><code data-trim contenteditable>
+$ sudo apt-get cowsay
+</code>
+</pre>
+
+<pre><code data-trim contenteditable>
+____________
+< PLAY [all] >
+------------
+        \    ^__^
+         \   (oo)\_______
+             (__)\       )\/\
+                 ||----w |
+                 ||     ||
+
+_________________
+< GATHERING FACTS >
+-----------------
+         \   ^__^
+          \  (oo)\_______
+             (__)\       )\/\
+                 ||----w |
+                 ||     ||
+
+
+ok: [128.199.38.37]
+
+</code>
+</pre></div>
+                </section>
+                <section>
+                    <h2>Goodies</h2>
+                </section>
+
+                <section>
+                    <div class="output left">
+                        <img src="img/vc-cover.png" style="float: left">
+                    </div>
+                    <div class="output" style="text-align: left">
+                        <p>25% discount on <a href="http://leanpub.com/vagrantcookbook/c/sweetlake">Leanpub</a><br>
+                        Use code <strong>sweetlake</strong></p>
+                        <p><small><a href="http://leanpub.com/vagrantcookbook/c/sweetlake">leanpub.com/vagrantcookbook/c/sweetlake</a></small></p>
+                        <p>Also on <a href="http://www.amazon.co.uk/Vagrant-Cookbook-Erika-Heidi/dp/1326020153/ref=sr_1_1?ie=UTF8&qid=1443784105&sr=8-1&keywords=vagrant+cookbook">Amazon</a> (paperback)</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Thanks!</h2>
+                    <p>@erikaheidi | erika@do.co </p>
+                    <p>http://slides.erikaheidi.com/DRIVE</p>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
