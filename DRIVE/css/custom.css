@@ -16,3 +16,17 @@ div.output.left {
 strong {
     color: #068ee9 !important;
 }
+
+div.tools {
+    text-align: center;
+    margin: 0 auto;
+}
+
+div.tools img {
+    float: left;
+    height: 80px;
+    width: auto;
+    margin: 15px 20px !important;
+    border: none !important;
+    background-color: transparent !important;
+}

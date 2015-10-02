@@ -47,11 +47,11 @@
                 </section>-->
 
 				<section>
-					<h1>D.R.I.V.E.<br/>
+					<h1>DRIVE<br/>
                         <small>with Vagrant and Ansible</small></h1>
 					<p>
 						A talk by <a href="http://twitter.com/erikaheidi">@erikaheidi</a><br>
-                        <img style="border:0;background:none" src="images/do.png">
+                        <img style="border:0;background:none" src="img/do.png">
 					</p>
 				</section>
 
@@ -95,15 +95,17 @@
                     <h2>What a Time to Be Alive!</h2>
                     <img src="img/builtin.png">
 
-                    <img src="img/ubuntu.png" style="border: none; background-color: transparent; float: left">
-                    <img src="img/git-logo.png" style="border: none; background-color: transparent; float: left">
-
+                    <div class="tools">
+                        <img src="img/ubuntu.png">
+                        <img src="img/git-logo.png">
+                        <img src="img/DO_Logo_Horizontal_White.png">
+                    </div>
                 </section>
 
                 <section>
                     <h2>But, still...</h2>
                     <p>"It works on my machine..."</p>
-                    <img src="img/catslap.gif">
+                    <img src="img/nic_no.gif">
                 </section>
 
                 <section>
@@ -112,7 +114,7 @@
                 </section>
 
                 <section>
-                    <h2>D.R.I.V.E.</h2>
+                    <h2>D.R.I.V.E</h2>
                     <ul>
                         <li><strong>D</strong>isposable</li>
                         <li><strong>R</strong>eplicable</li>
@@ -123,40 +125,36 @@
                 </section>
 
                 <section>
-                    IMAGE explaining: disposable + isolated = VMs e containers, etc
-                </section>
+                    <h2>D.R.I.V.E</h2>
+                    <div class="output left">
+                        <h3>Disposable & Isolated</h3>
+                        <ul class="fragment">
+                            <li><strong>Virtual Machines</strong></li>
+                            <li>Tools:
+                                <ul>
+                                    <li>VirtualBox</li>
+                                    <li>VMWare</li>
+                                    <li>KVM</li>
+                                    <li>Xen</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
-                <section>
-                    <h2>Virtual Machines</h2>
-                    <ul>
-                        <li class="fragment"><strong>Disposable</strong> Machine</li>
-                        <li class="fragment"><strong>Isolated</strong> Environment</li>
-                        <li class="fragment">Tools:
-                            <ul>
-                                <li>VirtualBox</li>
-                                <li>VMWare</li>
-                                <li>KVM</li>
-                                <li>Xen</li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Configuration Management</h2>
-                    <ul>
-                        <li class="fragment"><strong>Replicable</strong> Provisioning</li>
-                        <li class="fragment">"Blueprint" of the Provisioning can be <strong>Versioned</strong></li>
-                        <li class="fragment">Tools:
-                            <ul>
-                                <li>Ansible</li>
-                                <li>Puppet</li>
-                                <li>Chef</li>
-                                <li>Salt</li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="output">
+                        <h3>Replicable & Versioned</h3>
+                        <ul class="fragment">
+                            <li><strong>Config Management</strong></li>
+                            <li>Tools:
+                                <ul>
+                                    <li>Ansible</li>
+                                    <li>Puppet</li>
+                                    <li>Chef</li>
+                                    <li>Salt</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section>
@@ -174,14 +172,19 @@
                 </section>
 
                 <section>
+                    <h2>How Vagrant Works</h2>
+                    <img src="img/howitworks.png" style="background-color: #FFFFFF">
+                </section>
+
+                <section>
                     <h2>Otto?</h2>
                     <img src="img/otto.png">
                     <blockquote class="fragment">"Otto is very young and while we tout it as a successor to Vagrant, it'll take time to reach the maturity level that Vagrant is already at. We don't recommend dropping Vagrant today, but look to Otto for the future.."</blockquote>
                 </section>
 
                 <section>
-                    <h2>How Vagrant Works</h2>
-                    <img src="img/howitworks.png" style="background-color: #FFFFFF">
+                    <h2>Closing the Gap</h2>
+                    <h3>Between <strong>DEV</strong> and <strong>PROD</strong></h3>
                 </section>
 
                 <section>
