@@ -68,3 +68,25 @@ blockquote span.author {
     font-weight: bold;
     font-size: 0.8em;
 }
+
+div.quotedark {
+    background-color: #111111;
+    color: #ffffff;
+    opacity: .90; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=70); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=70)"; /* IE 8 */
+    -khtml-opacity: .70; /* Safari 1.x */
+    -moz-opacity: .70; /* FF lt 1.5, Netscape */
+    padding: 40px 25px;
+    font-size: 1.5em;
+}
+
+span.aqua {
+    color: #27b995;
+    font-weight: bolder;
+}
+
+span.featured {
+    font-size: 2em;
+    color: #FF3399;
+}
