@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  vars:
+     packages: ["nginx", "vim"]
+     message: "1st DigitalOcean Berlin Meetup, YAY!"
+  tasks:
+     - name: Update apt-cache 
+       apt: update_cache=yes
+
+     - name: Install Packages
+       apt: name={{ item }} state=latest
+       with_items: packages
+
+     - name: Change Nginx index file
+       template: src=index.html.tpl dest=/usr/share/nginx/html/index.html
+       notify: restart nginx
+  handlers:
+     - name: restart nginx
+       service: name=nginx enabled=yes state=restarted
